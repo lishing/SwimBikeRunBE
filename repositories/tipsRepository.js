@@ -1,0 +1,55 @@
+const db = require('../db');
+const { ObjectID } = require('mongodb');
+
+module.exports = {
+    //create one entry
+    async create(data) {
+        try {
+            const {insertedCount} = await db.tips.insertOne(data);
+            if (!insertedCount) throw new Error('fail to add');
+            return true;
+        } catch (err) {
+            throw new Error(`Due to ${err.message}, you can't insert this item ${JSON.stringify}`)
+        }
+    },
+
+    //get all tips
+    getAll(){
+        return db.tips.find().toArray();
+    },
+
+    //view one selected tip by modal view
+    async getOneById(id){
+        const result = await db.tips.findOne(
+            {
+                "id": ObjectID(id)
+            }
+        );
+        return result;
+    },
+
+    //update one
+    update(id, body) {
+        return db.tips.updateOne(
+            {
+                "_id":ObjectID(id)
+            },
+            {
+                $set: body
+            },
+        );
+    },
+
+    //delete one
+    delete(id) {
+        return db.tips.deleteOne(
+            {
+                "_id": ObjectID(id)
+            }
+        )
+    }
+
+
+
+
+}
