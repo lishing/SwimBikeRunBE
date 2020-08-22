@@ -28,18 +28,24 @@ module.exports = {
         return result;
     },
 
-    //get all by category "training"
-    async getAllByTags(tag, searchedValue){
-        let matchedResultsArray = []
-        let results = null;
-        if (searchedValue === tag){
-            result = await db.tips.getAllByTags(
-                {"tag" : searchedValue}
-            )
-        };
-        matchedResultsArray.push(result);
-        return matchedResultsArray
+    //get all by tags, double check
+    async getAllByTags(searchedValue){
+        const result = await db.tips.find({
+            "tags" : { $regex: searchedValue }
+        })
     },
+
+    // async getAllByTags(tag, searchedValue){
+    //     let matchedResultsArray = []
+    //     let results = null;
+    //     if (searchedValue === tag){
+    //         result = await db.tips.getAllByTags(
+    //             {"tag" : searchedValue}
+    //         )
+    //     };
+    //     matchedResultsArray.push(result);
+    //     return matchedResultsArray
+    // },
 
     //update one
     update(id, body) {

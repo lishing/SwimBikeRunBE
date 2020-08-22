@@ -9,12 +9,14 @@ module.exports = app => {
     app.delete('/sessions', sessionController.destroy);
 
     // Tips
-
     // View all tips
-    app.get('/tips', tipController.viewAll);
+    app.get('/tips', tipsController.getAll);
 
-    // View information of selected tip
-    app.get('/tips/:id', tipController.viewOneSelected);
+    // View information of one selected tip on click - modal
+    app.get('/tips/:id', tipsController.viewOneSelected);
+
+    // View information of selected category
+    app.get('/tips/')
 
     // add one tip
     app.create('/tips/new', tipController.createOne);
