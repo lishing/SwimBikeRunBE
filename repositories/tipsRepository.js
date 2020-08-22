@@ -22,10 +22,23 @@ module.exports = {
     async getOneById(id){
         const result = await db.tips.findOne(
             {
-                "id": ObjectID(id)
+                "_id": ObjectID(id)
             }
         );
         return result;
+    },
+
+    //get all by category "training"
+    async getAllByTags(tag, searchedValue){
+        let matchedResultsArray = []
+        let results = null;
+        if (searchedValue === tag){
+            result = await db.tips.getAllByTags(
+                {"tag" : searchedValue}
+            )
+        };
+        matchedResultsArray.push(result);
+        return matchedResultsArray
     },
 
     //update one
@@ -41,7 +54,7 @@ module.exports = {
     },
 
     //delete one
-    delete(id) {
+    deleteOneByID(id) {
         return db.tips.deleteOne(
             {
                 "_id": ObjectID(id)
