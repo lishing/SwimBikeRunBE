@@ -1,4 +1,3 @@
-const userController = require('./controllers/userController');
 const tipsController = require('./controllers/tipsController');
 const sessionController = require('./controllers/sessionController')
 
@@ -19,13 +18,13 @@ module.exports = app => {
     app.get('/tips/')
 
     // add one tip
-    app.create('/tips/new', tipController.createOne);
+    app.post('/tips/new', tipsController.createOne);
 
     // Update description of selected tip
-    app.put('/likedtips/:id', tipController.updateOneSelected)
+    app.put('/likedtips/:id', tipsController.updateOneSelected)
 
     // Delete selected tip
-    app.delete('/tips/:id', tipController.delete);
+    app.delete('/tips/:id', tipsController.delete);
 
 
     // // USERS
