@@ -1,30 +1,30 @@
-const tipsController = require('./controllers/tipsController');
-const sessionController = require('./controllers/sessionController')
+const tipsController = require('./controllers/tipsControllers');
+//const sessionController = require('./controllers/sessionControllers')
 
 module.exports = app => {
 
-    app.post('/sessions', sessionController.create);
+    //app.post('/sessions', sessionController.create);
     // app.get('/sessions/new', sessionController.newForm);
-    app.delete('/sessions', sessionController.destroy);
+    //app.delete('/sessions', sessionController.destroy);
 
-    // Tips
+    // Tips, need to fix routes
     // View all tips
     app.get('/tips', tipsController.getAll);
 
     // View information of one selected tip on click - modal
-    app.get('/tips/:id', tipsController.viewOneSelected);
+    //app.get('/tips/:id', tipsController.viewOneSelected);
 
     // View information of selected category
-    app.get('/tips/')
+    //app.get('/tips/training')
 
     // add one tip
-    app.post('/tips/new', tipsController.createOne);
+    app.post('/new', tipsController.createOne);
 
     // Update description of selected tip
-    app.put('/likedtips/:id', tipsController.updateOneSelected)
+    //app.put('/likedtips/:id', tipsController.updateOneSelected)
 
     // Delete selected tip
-    app.delete('/tips/:id', tipsController.delete);
+    //app.delete('/tips/:id', tipsController.delete);
 
 
     // // USERS

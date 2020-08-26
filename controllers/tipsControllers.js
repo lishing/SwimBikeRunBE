@@ -16,7 +16,8 @@ module.exports = {
     //get and view all
     async getAll (req, res){
         const tips = await tipsRepository.getAll();
-        res.render('home', {tips});
+        console.log('line19', tips)
+        res.send(tips);
     },
     //create One
     getForm(req, res){
@@ -32,44 +33,44 @@ module.exports = {
     },
 
     //view one selected
-    async getOneById (req,res){
-        try{
-            const logs = await logRepository.getOne(req.params.id);
-            res.render('show', { logs });
-        } catch (err) {
-            console.log('error', err);
-        }
-    },
+    // async getOneById (req,res){
+    //     try{
+    //         const logs = await logRepository.getOne(req.params.id);
+    //         res.render('show', { logs });
+    //     } catch (err) {
+    //         console.log('error', err);
+    //     }
+    // },
 
     //view selected tips by tags - need to check but how?
-    async getAllByTags (req, res){
-        try{
-            const logs = await logRepository.getMany(req.params.body);
-            res.render(`/${tags}`, { logs });
-        } catch (err) {
-            console.log('error', err);
-        }
-    },
+    // async getAllByTags (req, res){
+    //     try{
+    //         const logs = await logRepository.getMany(req.params.body);
+    //         res.render(`/${tags}`, { logs });
+    //     } catch (err) {
+    //         console.log('error', err);
+    //     }
+    // },
     
     // update one selected tip
     //get route
-    async update (req, res) {
-        const tips = await tipsRepository.getOne(req.params.id);
-        res.render('/edit', {tips})
-    },
-    //post route
-    async editOne (req, res) {
-        const editedTip = req.body;
-        const id = req.params.id;
-        await tipsRepository.updateOneSelected(id, editedTip);
-        res.redirect('/')
-    },
+    // async update (req, res) {
+    //     const tips = await tipsRepository.getOne(req.params.id);
+    //     res.render('/edit', {tips})
+    // },
+    // //post route
+    // async editOne (req, res) {
+    //     const editedTip = req.body;
+    //     const id = req.params.id;
+    //     await tipsRepository.updateOneSelected(id, editedTip);
+    //     res.redirect('/')
+    // },
 
-    //delete
-    async delete (req, res) {
-        const tips = await tipsRepository.delete(req.params.id);
-        return res.redirect('/')
-    }
+    // //delete
+    // async delete (req, res) {
+    //     const tips = await tipsRepository.delete(req.params.id);
+    //     return res.redirect('/')
+    // }
     
     //users
 };
