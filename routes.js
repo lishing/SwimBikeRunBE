@@ -12,7 +12,7 @@ module.exports = app => {
     app.get('/tips', tipsController.getAll);
 
     // View information of one selected tip on click - modal
-    //app.get('/tips/:id', tipsController.viewOneSelected);
+    app.get('/tips/:id', tipsController.viewOneSelected);
 
     // View information of selected category
     //app.get('/tips/training')

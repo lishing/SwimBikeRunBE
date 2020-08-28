@@ -33,14 +33,14 @@ module.exports = {
     },
 
     //view one selected
-    // async getOneById (req,res){
-    //     try{
-    //         const logs = await logRepository.getOne(req.params.id);
-    //         res.render('show', { logs });
-    //     } catch (err) {
-    //         console.log('error', err);
-    //     }
-    // },
+    async viewOneSelected(req,res){
+        try{
+            const logs = await tipsRepository.getOne(req.params.id);
+            res.render(`tips/${req.params.id}`, { logs });
+        } catch (err) {
+            console.log('error', err);
+        }
+    },
 
     //view selected tips by tags - need to check but how?
     // async getAllByTags (req, res){
