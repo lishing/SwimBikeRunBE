@@ -15,23 +15,25 @@ module.exports = app => {
     app.get('/tips/:id', tipsController.viewOneSelected);
 
     // View information of selected category
-    //app.get('/tips/training')
+    app.get('/tips/tags/:tagName', tipsController.getAllByTags)
 
-    // add one tip
-    app.post('/new', tipsController.createOne);
+    // create one tip
+    //get create form
+    app.get('/tips/new', tipsController.getForm)
+    app.post('/tips', tipsController.createOne);
+    
+    // Delete selected tip
+    app.delete('/tips/:id', tipsController.delete);
 
     // Update description of selected tip
-    //app.put('/likedtips/:id', tipsController.updateOneSelected)
+    app.get('/tips/:id/edit', tipsController.update);
+    app.put('/tips/:id', tipsController.editOne);
 
-    // Delete selected tip
-    //app.delete('/tips/:id', tipsController.delete);
-
-
-    // // USERS
+    // // IGNORE FIRST : USERS
     // // Register a new user
     // app.post('/register', userController.create);
 
-    // // View all users
+    // // get all users
     // app.get('/users', userController.getAll);
 
     // // View all one user
@@ -46,7 +48,7 @@ module.exports = app => {
     // // Delete user profile
     // app.delete('/users/:id', userController.delete);
 
-
-    
-    
+    app.get('*', (req,res) =>{
+        res.status(404).json({message: 'No such route'})
+    })
 }
