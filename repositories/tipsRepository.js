@@ -69,7 +69,19 @@ module.exports = {
     },
 
     //update with like: find by ID, result.like = ! (toggle it), and then res.send
-    
+    //does not work
+    async editLikeByID(id, body) {
+        const results = await tips.findOneAndUpdate(
+            {
+                "_id":ObjectID(id)
+            },
+            {
+                liked: !body.liked
+            },
+        );
+        console.log(results.liked);
+        return results
+    }
 
     // async getAllByTags(tag, searchedValue){
     //     let matchedResultsArray = []

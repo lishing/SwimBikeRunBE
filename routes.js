@@ -31,8 +31,8 @@ module.exports = app => {
     app.put('/tips/:id', tipsController.editOne);
 
     // Update one by like
-    // app.get('/tips/:id/editlike', tipsController.updateLike);
-    // app.put('/tips/:id/liked', tipsController.editLike);
+    app.get('/tips/:id/editlike', tipsController.editLike);
+    app.put('/tips/:id/liked', tipsController.updateLike); //this has problem. where?
 
     // // IGNORE FIRST : USERS
     // // Register a new user
