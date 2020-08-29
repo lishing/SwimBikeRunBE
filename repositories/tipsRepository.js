@@ -40,7 +40,8 @@ module.exports = {
     },
 
     //get all by tags, double check
-    async getMany(searchedValue = ""){
+    async getMany(searchedValue){
+        console.log('get many')
         const result = await tips.find({"tags" : { $regex: searchedValue }});
         return result;
     },
@@ -61,11 +62,14 @@ module.exports = {
                 "_id":ObjectID(id)
             },
             {
-                $set: { body }
+                $set: body
             },
         );
         return results
     },
+
+    //update with like: find by ID, result.like = ! (toggle it), and then res.send
+    
 
     // async getAllByTags(tag, searchedValue){
     //     let matchedResultsArray = []

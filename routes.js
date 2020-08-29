@@ -15,11 +15,12 @@ module.exports = app => {
     app.get('/tips/:id', tipsController.viewOneSelected);
 
     // View information of selected category
-    app.get('/tips/tags/:tagName', tipsController.getAllByTags)
+    app.get('/tips/tags/:tagName', tipsController.getAllByTags) 
+
 
     // create one tip
     //get create form
-    app.get('/tips/new', tipsController.getForm)
+    app.get('/tips/new', tipsController.getForm) 
     app.post('/tips', tipsController.createOne);
     
     // Delete selected tip
@@ -28,6 +29,10 @@ module.exports = app => {
     // Update description of selected tip
     app.get('/tips/:id/edit', tipsController.update);
     app.put('/tips/:id', tipsController.editOne);
+
+    // Update one by like
+    // app.get('/tips/:id/editlike', tipsController.updateLike);
+    // app.put('/tips/:id/liked', tipsController.editLike);
 
     // // IGNORE FIRST : USERS
     // // Register a new user

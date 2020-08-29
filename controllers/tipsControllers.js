@@ -9,8 +9,8 @@ const tipsRepository = require('../repositories/tipsRepository');
 const httpResponseFormatter = require('../formatters/httpResponse');
 const InvalidTagError = require('../exceptions/InvalidTagError');
 const db = require('../db');
-const { getOne } = require('../repositories/userRepository');
-const { getAllByTags } = require('../repositories/tipsRepository');
+// const { getOne } = require('../repositories/userRepository');
+// const { getAllByTags } = require('../repositories/tipsRepository');
 
 module.exports = {
     //tips
@@ -29,6 +29,7 @@ module.exports = {
     // create and post
     async createOne (req,res){
         try {
+            console.log('controller create one', req.body)
             //did not use tips at all --> ask
             const tips = await tipsRepository.create(req.body);
             return res.redirect('/tips');
@@ -79,13 +80,27 @@ module.exports = {
     },
     //put route
     async editOne (req, res) {
+        console.log('edit one',req.body, req.params.id)
         const editedTip = req.body;
         const id = req.params.id;
         await tipsRepository.editOneByID(id, editedTip);
         res.redirect('/tips')
     },
 
-    //update one selected tip by likes --> ask
+    //update one selected tip by likes --> create a new route for liked tips
+    // update liked status, a put route
+    // '/tips/:id/liked'
+    // async update (req, res) {
+    //     const likedTip = await tipsRepository.getOneById(req.params.id);
+    //     res.send(likedTip)
+    // },
+    // //put route
+    // async editOne (req, res) {
+    //     const editedLike = req.body;
+    //     const id = req.params.id;
+    //     await tipsRepository.editOneByID(id, editedLike);
+    //     res.redirect(`/tips/${id}/liked`)
+    // },
 
     // //post route
     // async editOne (req, res) {

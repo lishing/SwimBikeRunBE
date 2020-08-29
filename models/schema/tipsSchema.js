@@ -26,7 +26,10 @@ const TipsSchema = new Schema(
         },
         tags: {
             type: 'string'
-        }
+        },
+        liked: {
+            type : Boolean
+        },
     },
 );
 
