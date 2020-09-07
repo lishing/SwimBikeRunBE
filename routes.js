@@ -10,6 +10,8 @@ module.exports = app => {
     // Tips, need to fix routes
     // View all tips
     app.get('/tips', tipsController.getAll);
+    //get by likes
+    app.get('/tips/liked', tipsController.getAllByLiked)
 
     // View information of one selected tip on click - modal
     app.get('/tips/:id', tipsController.viewOneSelected);
@@ -17,13 +19,12 @@ module.exports = app => {
     // View information of selected category
     app.get('/tips/tags/:tagName', tipsController.getAllByTags) 
 
-
     // create one tip
     //get create form
     app.get('/tips/new', tipsController.getForm) 
     app.post('/tips', tipsController.createOne);
     
-    // Delete selected tip
+    // Delete selected tip //// start here
     app.delete('/tips/:id', tipsController.delete);
 
     // Update description of selected tip

@@ -38,13 +38,20 @@ module.exports = {
         );
         return result;
     },
-
-    //get all by tags, double check
-    async getMany(searchedValue){
-        console.log('get many')
-        const result = await tips.find({"tags" : { $regex: searchedValue }});
+    async getAllByLiked(){
+        const result = await tips.find({
+            "liked": true
+        });
         return result;
     },
+    
+
+    //get all by tags, double check
+    // async getMany(searchedValue){
+    //     console.log('get many')
+    //     const result = await tips.find({"tags" : { $regex: searchedValue }});
+    //     return result;
+    // },
     //delete one
     async deleteOneByID(id) {
         const results = await tips.deleteOne(

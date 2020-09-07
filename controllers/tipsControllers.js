@@ -66,6 +66,17 @@ module.exports = {
         }
     },
 
+    async getAllByLiked (req, res){
+        try{
+            const tips = await tipsRepository.getAllByLiked();
+            res.status(200).json({ tips });
+        } catch (err) {
+            httpResponseFormatter.formatErrorResponse(res, err)
+        }
+    },
+
+    
+
     //delete
     async delete (req, res) {
         const tips = await tipsRepository.deleteOneByID(req.params.id);
