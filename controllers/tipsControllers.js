@@ -30,9 +30,10 @@ module.exports = {
     async createOne (req,res){
         try {
             console.log('controller create one', req.body)
-            //did not use tips at all --> ask
             const tips = await tipsRepository.create(req.body);
-            return res.redirect('/tips');
+            if (tips){
+                res.status(200).json({success: true, data: tips})
+            }
         } catch (err) {
             console.log('error', err);
         }
@@ -80,14 +81,18 @@ module.exports = {
     //delete
     async delete (req, res) {
         const tips = await tipsRepository.deleteOneByID(req.params.id);
-        return res.redirect('/tips')
+        if (tips){
+            return res.status(200).json({success: true, data: tips})
+        }
     },
 
     // update one selected tip
     //update
     async update (req, res) {
         const tips = await tipsRepository.getOneById(req.params.id);
-        res.send(tips)
+        if (tips){
+            return res.status(200).json({success: true, data: tips})
+        }
     },
     //put route
     async editOne (req, res) {
