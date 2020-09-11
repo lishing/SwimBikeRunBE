@@ -100,7 +100,7 @@ module.exports = {
         const editedTip = req.body;
         const id = req.params.id;
         await tipsRepository.editOneByID(id, editedTip);
-        res.redirect('/tips')
+        return res.status(200).json({success: true, data: "editedOne"})
     },
 
     //update one selected tip by likes --> create a new route for liked tips
@@ -109,16 +109,17 @@ module.exports = {
         const likedTipID = await tipsRepository.getOneById(req.params.id); //should it be req.body?
         let likedTip = likedTipID.liked
         likedTip = !likedTip //toggle the boolean
-        res.send(likedTip)
+        return res.status(200).json({success: true, data: "editedLiked"})
     },
     //put route: '/tips/:id/liked --> double check 
     async updateLike (req, res) {
-        const result = req.body;
-        const resultLike = result.liked
-        console.log(resultLike) // at least put route works
+        // const result = req.body;
+        //const resultLike = result.liked
+        // console.log(resultLike) // at least put route works
         const id = req.params.id; 
-        await tipsRepository.editLikeByID(id, resultLike);
-        res.redirect(`/tips/${id}/liked`) // so that it goes back to the tip, but it shows liked
+        const updatedLike = await tipsRepository.editLikeByID(id);
+        return res.status(200).json({success: true, data: updatedLike})
+        //res.redirect(`/tips/${id}/liked`) // so that it goes back to the tip, but it shows liked
     },
 
     // //post route --? 

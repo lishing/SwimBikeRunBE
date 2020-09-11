@@ -77,16 +77,18 @@ module.exports = {
 
     //update with like: find by ID, result.like = ! (toggle it), and then res.send
     //does not work
-    async editLikeByID(id, body) {
+    async editLikeByID(id) {
+        const info = await this.getOneById(id)
+        console.log('82', info.liked)
         const results = await tips.findOneAndUpdate(
             {
                 "_id":ObjectID(id)
             },
             {
-                liked: !body.liked
+                liked: !info.liked
             },
         );
-        console.log(results.liked);
+        console.log('91', results.liked);
         return results
     }
 
