@@ -30,7 +30,7 @@ app.use(function(req, res, next) {
     // res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, OPTIONS, PATCH");
     // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, x-access-token, Cookie, Content-Type, access_token, Accept");
     next();
-});
+}); 
 require('./routes')(app);
 
 app.listen(PORT, () =>{
