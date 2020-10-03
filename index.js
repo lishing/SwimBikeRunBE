@@ -3,11 +3,14 @@ const express = require('express');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const PORT = process.env.PORT || 4000;
-require('./db');
 const app = express();
 const mongoURI = 'mongodb+srv://LiShing:*8B8vxo9@swimbikerun.mwv15.azure.mongodb.net/test?authSource=admin&replicaSet=atlas-18ukyn-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true'
 const frontEndUrl = process.env.Front_End_URL || 'https://localhost:3000'
 const cors = require('cors')
+
+//imports
+require('./db');
+
 // //connect to Mongo via mongoose
 // mongoose.connect(
 //     mongoURI,

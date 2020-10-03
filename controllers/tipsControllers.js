@@ -1,9 +1,5 @@
-// viewall
-// viewOneSelected
-// delete 
-// updateOneSelected
-// createOne
-// getAllByTags
+//filter by tags/getAll by category
+//search bar
 
 const tipsRepository = require('../repositories/tipsRepository');
 const httpResponseFormatter = require('../formatters/httpResponse');

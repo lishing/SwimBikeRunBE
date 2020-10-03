@@ -1,8 +1,7 @@
 const tipsController = require('./controllers/tipsControllers');
-//const sessionController = require('./controllers/sessionControllers')
+const sessionController = require('./controllers/sessionControllers')
 
 module.exports = app => {
-
     //app.post('/sessions', sessionController.create);
     // app.get('/sessions/new', sessionController.newForm);
     //app.delete('/sessions', sessionController.destroy);
